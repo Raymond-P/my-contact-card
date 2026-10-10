@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool editMode = false;
   Icon editModeIcon = Icon(Icons.edit);
+  Color currentColor = Color(0x0);
+  Color pickerColor = Color(0x0);
   // TODO: Complete
   // final picker = ImagePicker();
 
@@ -53,6 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     );
     }
+
+
+  void _changeColor(Color color)
+  {
+    setState(() => pickerColor = color);
+  }
+
   // Future<void> _changeImage() {
   //   setState(()
   //    async {
@@ -60,11 +70,36 @@ class _MyHomePageState extends State<MyHomePage> {
   //    });
   // }
 
+  Future<void> _colorPickerDialogBuilder(BuildContext context)
+  {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Pick a color!"),
+          content: SingleChildScrollView(
+            child: MaterialPicker(
+              pickerColor: pickerColor,
+              onColorChanged: _changeColor,
+            ),
+        ),
+        actions: <Widget>[
+          TextButton(
+          child: const Text("OK"), 
+          onPressed: () {
+            setState(() => currentColor = pickerColor);
+            Navigator.of(context).pop();
+          })]
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+         backgroundColor: pickerColor,
         title: Text(widget.title),
       ),
       body: Center(
@@ -101,17 +136,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 )
             ),
-
             Padding(
               padding: EdgeInsets.all(8),
               child:
-                TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Favorite Color',
-                      enabled: editMode,
-                  )
-                )
+              TextButton(
+                child: const Text("Choose your favorite color!"),
+                onPressed:() => _colorPickerDialogBuilder(context),
+              )
             )
           ]
         ),
