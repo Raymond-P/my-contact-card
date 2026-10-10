@@ -58,11 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.all(8),
               child: 
-                const Image(
-                        image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-                        ),
+                CircleAvatar(
+                  foregroundImage: NetworkImage("https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg",),
+                  radius: 80,
+                  )
             ),
-
             Padding(
               padding: EdgeInsets.all(8),
               child: 
