@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool editMode = false;
   Icon editModeIcon = Icon(Icons.edit);
   // TODO: Complete
-  final picker = ImagePicker();
+  // final picker = ImagePicker();
 
   void _changeMode() {
     setState(() 
@@ -53,12 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     );
     }
-  Future<void> _changeImage() {
-    setState(()
-     async {
-        final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-     });
-  }
+  // Future<void> _changeImage() {
+  //   setState(()
+  //    async {
+  //       final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+  //    });
+  // }
 
   @override
   Widget build(BuildContext context) {
