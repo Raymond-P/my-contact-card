@@ -30,19 +30,35 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool editMode = false;
   Icon editModeIcon = Icon(Icons.edit);
+  // TODO: Complete
+  final picker = ImagePicker();
 
   void _changeMode() {
     setState(() 
     {
       editMode = !editMode;
       if(editMode) {
-        editModeIcon = Icon(Icons.save);
+        editModeIcon = Icon(Icons.check);
       } else {
         editModeIcon = Icon(Icons.edit);
+        // ScaffoldMessenger.of(context).clearSnackBars();
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(
+        //     content: const Text('Saved Personal Card'),
+        //     duration: const Duration(seconds: 3),
+        //     behavior: .floating,
+        //     )
+        // );
       }
       }
     );
     }
+  Future<void> _changeImage() {
+    setState(()
+     async {
+        final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+     });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   border: OutlineInputBorder(),
                   labelText: 'Name',
                   enabled: editMode,
-            )
-            )
+                  )
+                )
             ),
-
             Padding(
               padding: EdgeInsets.all(8),
               child:
@@ -96,9 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       labelText: 'Favorite Color',
                       enabled: editMode,
                   )
-                  )
                 )
-            ]
+            )
+          ]
         ),
       ),
       floatingActionButton: FloatingActionButton(
