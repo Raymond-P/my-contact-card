@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: const Color.fromARGB(255, 12, 202, 98)),
       ),
-      home: const MyHomePage(title: "My Personal Card"),
+      home: const MyHomePage(title: "Your Special Personal Card"),
     );
   }
 }
