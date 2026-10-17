@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(8),
               child: 
                 CircleAvatar(
-                  foregroundImage: NetworkImage("https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg",),
+                  foregroundImage: NetworkImage("https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Bubo_bubo_sibiricus_-_01.JPG/250px-Bubo_bubo_sibiricus_-_01.JPG",),
                   radius: 80,
                   )
             ),
